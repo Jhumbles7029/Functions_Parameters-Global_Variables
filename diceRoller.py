@@ -10,12 +10,6 @@ s4 = "- - - - -\n| O   O |\n|       |\n| O   O |\n- - - - -\n"
 s5 = "- - - - -\n| O   O |\n|   O   |\n| O   O |\n- - - - -\n"
 s6 = "- - - - -\n| O   O |\n| O   O |\n| O   O |\n- - - - -\n"
 
-def roll():
-    print("rolling.....")
-    roll = random.randint(0,7)
-    global roll
-#roll = rand.randing(7) should be as above or the parameters are wrong and the random statement is spelled incorrectly, as is the int suffix.
-
 def show_dice(roll):
     if roll == 1:
         print(s1)
@@ -29,19 +23,30 @@ def show_dice(roll):
         print(s5)
     elif roll == 6:
         print(s6)
+    #All of the above ^^ needed to be elif statements, have TWO '+' signs, and a colon on the end, except the obvious differences in the last one.
+    
 
 def rollDice():
     print("rolling.....")
+    global roll
     roll = random.randint(0,7)
     time.sleep(0.5)
-    show_dice(roll)
-#All of the above needed to be elif statements, have TWO '+' signs, and a colon on the end, except the obvious differences in the last one.
-
-roll()
-time.sleep(1)
-show_dice(roll)
-#These do not need indentations.
+    #roll = rand.randing(7) should be as above or the parameters are wrong and the random statement is spelled incorrectly, as is the int suffix.
 
 
-#There was a logic scope error in that roll() kept the value for roll, so when show_dice() was called it did not have the variable so assigned 'None'.
+while True:
+    q1 = input("Type 1 to roll a die,\nType 2 to show the result,\nOr type 3 to do both together.")
+    time.sleep(1)
+    if q1 == 1:
+        rollDice()
+    elif q1 == 2:
+        show_dice(roll)
+    else:
+        rollDice()
+        time.sleep(1)
+        show_dice(roll)
+
+#There were unneeded indentations.
+
+#There was a logic scope error, in that roll() kept the value for roll, so when show_dice() was called it did not have the variable so assigned 'None'.
 #This was solved by making roll global.
